@@ -10,4 +10,14 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser };
+const getUser = async (req, res) => {
+  // try {
+    const { user } = req;
+    const { password, ...rest } = user;
+    return res.status(200).json({ user: rest });
+  // } catch (e) {
+  //   return res.status(404).json({ message: e.message });
+  // }
+};
+
+module.exports = { createUser, getUser };

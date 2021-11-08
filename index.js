@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 const getMessages = require('./controllers/getMessages');
 const User = require('./controllers/User');
 const checkExistUserOnRegister = require('./middlewares/checkExistUserOnRegister');
+const validateUser = require('./middlewares/validateUser');
 
 const io = new Server(server, {
   cors: {
@@ -25,5 +26,6 @@ app.use(bodyParser.json());
 
 app.get('/', getMessages);
 app.post('/register', checkExistUserOnRegister, User.createUser);
+app.post('/login', validateUser, User.getUser);
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
