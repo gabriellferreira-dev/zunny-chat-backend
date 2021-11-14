@@ -16,4 +16,10 @@ const getUserByEmail = async (email) => {
   return user;
 };
 
-module.exports = { createUser, getUserByEmail };
+const updateUser = async (id, data) => {
+  const db = await connection();
+
+  await db.collection('users').findOneAndUpdate({ id }, data);
+};
+
+module.exports = { createUser, getUserByEmail, updateUser };

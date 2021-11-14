@@ -26,6 +26,6 @@ app.use(bodyParser.json());
 
 app.get('/', getMessages);
 app.post('/register', checkExistUserOnRegister, User.createUser);
-app.post('/login', validateUser, User.getUser);
+app.post('/login', validateUser, User.userLogin);
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
