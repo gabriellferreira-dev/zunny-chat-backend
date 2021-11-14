@@ -24,6 +24,8 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
+require('./sockets/Chat')(io);
+
 app.get('/', getMessages);
 app.post('/register', checkExistUserOnRegister, User.createUser);
 app.post('/login', validateUser, User.userLogin);
